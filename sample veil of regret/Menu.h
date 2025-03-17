@@ -57,14 +57,17 @@ public:
 	}
 	void update(int mx, int my)
 	{
-		if ((mx > 380 && my > 310) && (mx < 430 && my < 328))
+		if (!play_clicked)
 		{
-			choice = 1;
+			if ((mx > 380 && my > 310) && (mx < 430 && my < 328))
+			{
+				choice = 1;
+			}
+			else if ((mx > 318 && my > 254) && (mx < 495 && my < 275)) choice = 2;
+			else if ((mx > 364 && my > 207) && (mx < 445 && my < 225)) choice = 3;
+			else if ((mx > 378 && my > 162) && (mx < 426 && my < 177)) choice = 4;
+			else choice = 0;
 		}
-		else if ((mx > 318 && my > 254) && (mx < 495 && my < 275)) choice = 2;
-		else if ((mx > 364 && my > 207) && (mx < 445 && my < 225)) choice = 3;
-		else if ((mx > 378 && my > 162) && (mx < 426 && my < 177)) choice = 4;
-		else choice = 0;
 		if (play_clicked)
 		{
 			if ((mx > 16 && my > 105) && (mx < 213 && my < 523)) chapterChoice = 1; // chap 1
@@ -75,11 +78,19 @@ public:
 		}
 		if (credits_clicked)
 		{
-			if ((mx > 23 && my > 28) && (mx < 146 && my < 65)) credits_clicked = false;
+			if ((mx > 23 && my > 28) && (mx < 146 && my < 65))
+			{
+				credits_clicked = false;
+				play_clicked = false;
+			}
 		}
 		if (inst_clicked)
 		{
-			if ((mx > 23 && my > 28) && (mx < 146 && my < 65)) inst_clicked = false;
+			if ((mx > 23 && my > 28) && (mx < 146 && my < 65))
+			{
+				inst_clicked = false;
+				play_clicked = false;
+			}
 		}
 	}
 	int getChoice() const

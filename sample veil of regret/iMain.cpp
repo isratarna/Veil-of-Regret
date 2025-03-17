@@ -129,6 +129,11 @@ void returnToChapterSelect() {
 	if (guilt3) {
 		guilt3->reset(Pos(600, 26), 150);
 	}
+	if (regret)
+	{
+		regret->isDead = false;
+		regret.reset();
+	}
 	if (lvl2Won)
 		lvl2Won->resetLevel();
 	if (level1End) level1End->resetLevel();
@@ -402,8 +407,10 @@ void iMouse(int button, int state, int mx, int my)
 			else if (menu->getLevelChoice() == 4)
 			{
 				menu->play_clicked = false;
-				menu->credits_clicked = false;
+				menu->chapterChoice = 0;
+				menu->choice = 0;
 			}
+
 		}
 		if (lvl2 && lvl2->levelImageIndex == 1)
 		{
@@ -501,6 +508,10 @@ void iKeyboard(unsigned char key)
 			{
 				returnToChapterSelect();
 			}
+			if (level1->gameOver)
+			{
+				returnToChapterSelect();
+			}
 		}
 	}
 	if (key >= '1' && key <= '3')
@@ -533,6 +544,10 @@ void iKeyboard(unsigned char key)
 			returnToChapterSelect();
 		}
 		if (player->isDead)
+		{
+			returnToChapterSelect();
+		}
+		if (lvl3->failed)
 		{
 			returnToChapterSelect();
 		}
