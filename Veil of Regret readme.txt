@@ -1,4 +1,4 @@
-Veil of Regret
+﻿Veil of Regret
 
 Game Description
 
@@ -33,10 +33,10 @@ Make sure you have the following installed:
 
 Open the project in Visual Studio 2013
 - Open Visual Studio 2013.
-- Go to File ? Open ? Project/Solution.
+- Go to File → Open → Project/Solution.
 - Locate and select the .sln file from the cloned repository.
-- Click Build ? Build Solution
-- Run the program by clicking Debug ? Start Without Debugging
+- Click Build → Build Solution
+- Run the program by clicking Debug → Start Without Debugging
 
 
 How to Play
@@ -53,7 +53,7 @@ Game Rules
 - Aralyn starts with 100 health points.
 - There are three levels in the game.
 - Each level contains monsters representing Aralyn's emotions.
-- Attacks reduce the opponent�s health based on the enemy.
+- Attacks reduce the opponent’s health based on the enemy.
 - Jumping can help avoid enemy attacks, and isolating one enemy before striking increases effectiveness.
 - Aralyn must complete all three levels to win.
 
