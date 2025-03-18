@@ -9,12 +9,12 @@ public:
 	unsigned int deathIndex = 0;
 	std::string name;
 	int deathSize;
-	int damageIndex = 5;
+	int damageIndex = 5; // 5 index por por damage nibe
 	int deathTimer = 0;
-	int offsetX = 40;
+	int offsetX = 40; // oije sprite er charpashe j extra space oituk katakati korte
 	bool moveApplied = false;
-	int leftX = 40;
-	int rotation = 0;
+	int leftX = 40; // oije sprite er charpashe j extra space oituk katakati korte for left side
+	int rotation = 0; // weapon switch korte
 	float attackCooldownTimer = 0.0f;  // Tracks the cooldown period after attack
 	const float attackCooldownDuration = 2.0f;  // 2-second cooldown duration
 	Player* targetPlayer = nullptr;
@@ -24,56 +24,56 @@ public:
 		: Player(_pos, _dim, damage, attack_cooldown, attackS, walkS, idleS),
 		deathSprites(std::move(death))
 	{
-		facingRight = false;
-		isIdle = true;
-		isMoving = false;
+		facingRight = false; // enemy left facing e thake, 
+		isIdle = true; // shurute idle
+		isMoving = false; // shurutei move korena
 		this->name = name;
 		walkSprites = std::move(walk);
 		idleSprites = std::move(idle);
 		attackSprites = std::move(attack);
 		deathSize = deathS;
-		this->movespeed = movespeed;
+		this->movespeed = movespeed; 
 	}
 
 	void updateAI(Player& plr)
 	{
 		if (isDead) return; // Stop updating if dead
 
-		moveTowardsPlayer(plr);
+		moveTowardsPlayer(plr); // func of this class
 
 		// If close enough, start attacking
-		if (!isAttacking && isNearPlayer(plr))
+		if (!isAttacking && isNearPlayer(plr)) // 
 		{
 			stopMoving();
 			attack(plr);
 			isAttacking = true; // Ensure this flag is set to true
 		}
 	}
-	void checkCollision(std::vector<PlayerProjectile>& projectiles)
+	void checkCollision(std::vector<PlayerProjectile>& projectiles) // collision detection bullet er sathe enemy er
 	{
 		if (isDead) return;
 
-		for (auto& projectile : projectiles)
+		for (auto& projectile : projectiles) 
 		{
 			if (projectile.isActive &&
 				pos.x < projectile.position.getX() + projectile.dimension.width &&
 				pos.x + dim.width > projectile.position.getX() &&
 				pos.y < projectile.position.getY() + projectile.dimension.height &&
-				pos.y + dim.height > projectile.position.getY())
+				pos.y + dim.height > projectile.position.getY()) // jodi active thake and projectile ta enemy er position er moddhe thake
 			{
-				projectile.isActive = false;
-				takeDamage(10);
+				projectile.isActive = false; //inactive kore dite hobe
+				takeDamage(20); //enemy damage nibe
 			}
 		}
 	}
-	void moveTowardsPlayer(Player& plr)
+	void moveTowardsPlayer(Player& plr) 
 	{
 		if (isDead) return; // Dead enemy should not move
 
 		int enemyX = pos.x;   // Enemy's x position
 		int playerX = plr.pos.x;  // Player's x position
 
-		if (isNearPlayer(plr))
+		if (isNearPlayer(plr)) // jodi player kache hoy stop moving 
 		{
 			stopMoving();
 			return;
@@ -92,30 +92,30 @@ public:
 	}
 
 
-	bool isNearPlayer(Player& plr)
+	bool isNearPlayer(Player& plr) 
 	{
 		if (!facingRight)
-			return std::abs(pos.x - plr.pos.x) <= offsetX;
+			return std::abs(pos.x - plr.pos.x) <= offsetX; // jodi oder 2 jon er position offsetx er kom othoba shoman hoy taile true
 		if (facingRight)
 			return std::abs(pos.x - plr.pos.x) <= leftX;
 	}
 	void multiAttack()
 	{
-		if (rotation == 0 && !moveApplied)
+		if (rotation == 0 && !moveApplied) // jodi 0 no attack style e thake switch to no 1 
 		{
 			std::vector<int> v;
 			v.reserve(10);
 			for (int i = 0; i < 10; i++)
 			{
-				std::string path = "Images/regret/Rattack" + std::to_string(i) + ".png";
+				std::string path = "Images/regret/Rattack" + std::to_string(i) + ".png"; // 0 no attack er sprites
 				v.emplace_back(iLoadImage(const_cast<char*>(path.c_str())));
 			}
 			attackSprites = v;
 			attackSize = 10;
-			moveApplied = true;
-			rotation = 1;
+			moveApplied = true; 
+			rotation = 1; // switvhed
 		}
-		else if (rotation == 1 && !moveApplied)
+		else if (rotation == 1 && !moveApplied) // jodi 1 no attack style e thake switch to no 0 
 		{
 			std::vector<int> v;
 			v.reserve(10);
@@ -159,7 +159,7 @@ public:
 			die();
 		}
 
-		if (isDead)
+		if (isDead) // jodio more jay stract death animaion
 		{
 			if (deathIndex < deathSprites.size() - 1)
 			{
@@ -183,12 +183,12 @@ public:
 		}
 
 		// Handle attack logic
-		if (isAttacking)
+		if (isAttacking) // jodi enemy attack kore
 		{
-			if (attackIndex == damageIndex && isColliding(player))
+			if (attackIndex == damageIndex && isColliding(player)) // and jodioita damage index e jay ar player er sathe collide kore
 			{
 				std::cout << "Enemy is attacking! Aralyn HP: " << targetPlayer->HP << ", Fear HP: " << this->HP << std::endl;
-				player.takeDamage(damage);
+				player.takeDamage(damage); // aralyn damage nibe
 			}
 
 			// Update attack animation

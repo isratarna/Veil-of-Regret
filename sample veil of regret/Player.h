@@ -24,11 +24,11 @@ public:
 	void update(double deltaTime) {
 		if (!isActive) return;
 
-		position.setX(position.getX() + velocityX * deltaTime);
+		position.setX(position.getX() + velocityX * deltaTime); //jodi true hoy move korbe ebhabe
 		position.setY(position.getY() + velocityY * deltaTime);
 
 		// Deactivate the projectile if it goes off-screen
-		if (position.getX() < 0 || position.getX() > 1920 || position.getY() < 0 || position.getY() > 1080) {
+		if (position.getX() < 0 || position.getX() > 1920 || position.getY() < 0 || position.getY() > 1080) { // jodi screen er baire chole jay inactive kore dibe
 			isActive = false;
 		}
 	}
@@ -102,7 +102,7 @@ public:
 		deathSprite = iLoadImage("Images/Player/death/death.png");
 		lostSprite = iLoadImage("Images/player/death/lose.png");
 	}
-	bool isColliding(const Player& other) const
+	bool isColliding(const Player& other) const // collision detection
 	{
 		return (pos.x < other.pos.x + other.dim.width &&
 			pos.x + dim.width > other.pos.x &&
@@ -147,7 +147,7 @@ public:
 	void updateProjectiles(double deltaTime)
 	{
 		for (auto& proj : projectiles) {
-			proj.update(deltaTime);
+			proj.update(deltaTime); // projectile class er update
 		}
 	}
 
@@ -283,12 +283,12 @@ public:
 		}
 	}
 
-	void rangedAttack()
+	void rangedAttack() // 
 	{
 		if (isDead) return;
 		if (!isAttacking)
 		{
-			float projVelX = facingRight ? 10.0f : -10.0f;
+			float projVelX = facingRight ? 10.0f : -10.0f; 
 			isAttacking = true;
 			isIdle = false;
 			isMoving = false;
@@ -302,7 +302,7 @@ public:
 		}
 	}
 	
-	virtual void attack(Player& target)
+	virtual void attack(Player& target) // ekta certain period por por attack kore, attack index
 	{
 		if (isDead) return;
 		if (!isAttacking) // Attack only if not already attacking and the target is within range
