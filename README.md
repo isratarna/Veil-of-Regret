@@ -9,7 +9,7 @@
 - Basic animations for punching, kicking, and blocking.
 - Health bars for both players.
 - Keyboard controls for attacking and movement.
-- Simple AI for single-player mode (or two-player mode available).
+- Simple AI for single-player mode.
 
 
 
