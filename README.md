@@ -16,7 +16,7 @@
 ## Project Details
 IDE: Visual studio 2010/2013
 
-Language: C,C++.
+Language: C++.
 
 Platform : Windows PC.
 
