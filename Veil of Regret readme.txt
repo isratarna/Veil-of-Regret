@@ -22,6 +22,10 @@ Platform : Windows PC.
 
 Genre : 2D psychological horror
 
+Course : CSE 1200 (1st Year, 2nd Semester)
+
+Graphics Library : iGraphics (built on OpenGL/GLUT)
+
 
 How to Run the Project
 

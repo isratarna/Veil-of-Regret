@@ -6,11 +6,14 @@
 
 ### *Every monster is a memory. Every memory wants you dead.*
 
-A hand-built **2D psychological horror** game in **C++ & OpenGL**. Fight your way through a haunted town
+A hand-built **2D psychological horror** game in **C++ & iGraphics**. Fight your way through a haunted town
 where every enemy is one of Aralyn's emotions: Fear, Guilt, Paranoia and, last of all, **Regret**.
 
+<sub>🎓 Built as the **CSE 1200** course project (1st Year, 2nd Semester).</sub>
+
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![OpenGL](https://img.shields.io/badge/OpenGL-GLUT-5586A4?style=for-the-badge&logo=opengl&logoColor=white)
+![iGraphics](https://img.shields.io/badge/iGraphics-OpenGL%20%2F%20GLUT-5586A4?style=for-the-badge&logo=opengl&logoColor=white)
+![Course](https://img.shields.io/badge/Course-CSE%201200-6A0DAD?style=for-the-badge)
 ![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 ![Genre](https://img.shields.io/badge/Genre-Psychological%20Horror-8B0000?style=for-the-badge)
 
@@ -41,8 +44,8 @@ where every enemy is one of Aralyn's emotions: Fear, Guilt, Paranoia and, last o
 
 </div>
 
-No game engine, no Unity, no Unreal. Every animation, every collision check and every cutscene runs on raw C++
-over OpenGL/GLUT, with a custom frame-animation system built from scratch.
+No game engine, no Unity, no Unreal, no AI. Every animation, every collision check and every cutscene runs on raw C++
+with iGraphics (OpenGL/GLUT under the hood), with a custom frame-animation system built from scratch.
 
 ---
 
@@ -149,7 +152,7 @@ In Chapter III you can **swap weapons mid-fight**. Use the chainsaw `1` up close
 
 ## 🛠️ Under the Hood
 
-Built without an engine, on top of the **iGraphics** wrapper around OpenGL/GLUT:
+Built without an engine, on top of the **iGraphics** library (which runs on OpenGL/GLUT behind the scenes):
 
 - **Custom animation engine**: a reusable `Animation` class streams numbered frame sequences with per-clip timing, looping and audio sync. It drives all 484 cinematic frames.
 - **Object-oriented combat**: `Enemy` inherits from `Player`, so every monster reuses the same movement, attack-cooldown and health-bar code, with chase-and-attack AI added on top.
@@ -190,7 +193,7 @@ Built without an engine, on top of the **iGraphics** wrapper around OpenGL/GLUT:
 
 ## 🚀 Build & Run
 
-**Requirements:** Windows · Visual Studio 2013 (or newer with the v120 toolset) · iGraphics/GLUT (included in this repo)
+**Requirements:** Windows · Visual Studio 2013 (or newer with the v120 toolset) · iGraphics (included in this repo)
 
 ```bash
 git clone https://github.com/isratarna/Veil-of-Regret.git
