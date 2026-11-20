@@ -94,13 +94,7 @@ Every enemy is a feeling Aralyn never dealt with, and each one has its own **wal
 
 ### How hard each monster hits
 
-```mermaid
-xychart-beta
-    title "Enemy Damage per Hit"
-    x-axis ["Paranoia", "Fireworm", "Fear", "Reaper", "Guilt", "Regret"]
-    y-axis "Damage" 0 --> 20
-    bar [3, 7, 10, 10, 15, 15]
-```
+<img src="docs/media/chart-enemy-damage.png" alt="Bar chart of enemy damage per hit" width="100%"/>
 
 Paranoia hits the softest, but it comes in **swarms of six**. Chapter III throws 10 enemies at you at once before Regret arrives.
 
@@ -116,35 +110,7 @@ Paranoia hits the softest, but it comes in **swarms of six**. Chapter III throws
 </tr>
 </table>
 
-```mermaid
-flowchart LR
-    A([🕰️ Clock Cinematic]) --> B[Main Menu]
-    B --> C1
-
-    subgraph CH1 [" Chapter I: Fear "]
-        C1[📜 Narrative] --> P1{🔢 Clock Code<br/>Puzzle}
-        P1 -- 3 wrong tries --> X1[💀 Game Over]
-        P1 -- solved --> F1[⚔️ Fear + 2 Reapers]
-    end
-
-    subgraph CH2 [" Chapter II: Guilt "]
-        P2{🧩 Emotion-Pairing<br/>Puzzle} --> F2[⚔️ 3 Guilts]
-        F2 --> CAT{🐈 The Cat:<br/>Accept or Reject?}
-    end
-
-    subgraph CH3 [" Chapter III: Regret "]
-        P3{❓ 3 Riddles} --> F3[⚔️ 6 Paranoia + 3 Fireworms]
-        F3 --> BOSS[💀 BOSS: Regret]
-    end
-
-    F1 --> M1[🎞️ Memory Cinematic] --> P2
-    CAT --> M2[🎞️ Memory Cinematic] --> P3
-    BOSS --> END([🎞️ Final Cinematic<br/>The Twist])
-
-    style BOSS fill:#8B0000,color:#fff
-    style END fill:#1a1a2e,color:#f0d9a8
-    style X1 fill:#333,color:#fff
-```
+<img src="docs/media/diagram-story-flow.png" alt="Flow of the game from the opening cinematic through all three chapters to the final twist" width="100%"/>
 
 ---
 
@@ -175,14 +141,7 @@ Aralyn's weapon changes as the story goes on.
 <img src="docs/media/aralyn-attack.gif" width="160"/>
 </div>
 
-```mermaid
-xychart-beta
-    title "Aralyn's Damage Output by Weapon"
-    x-axis ["Bare Hands (Ch. I)", "Axe (Ch. II)", "Chainsaw (Ch. III)", "Gun (Ch. III)"]
-    y-axis "Damage per hit" 0 --> 25
-    bar [5, 9, 13, 20]
-    line [5, 9, 13, 20]
-```
+<img src="docs/media/chart-weapons.png" alt="Chart of Aralyn's damage by weapon: 5, 9, 13, 20" width="100%"/>
 
 In Chapter III you can **swap weapons mid-fight**. Use the chainsaw `1` up close, or switch to the gun `2` and fire projectiles from range.
 
@@ -199,54 +158,9 @@ Built without an engine, on top of the **iGraphics** wrapper around OpenGL/GLUT:
 - **State-driven game flow** that ties menus, narrative screens, puzzles, fights and cutscenes together, with chapter select and restart at any point.
 - **Image loading** through `stb_image` and **audio** through the Win32 `PlaySound` API, with 4 soundtracks for menu, intro, cinematics and game over.
 
-```mermaid
-classDiagram
-    class Player {
-        +int HP
-        +int damage
-        +bool isRanged
-        +moveLeft() moveRight() jump()
-        +attack(target)
-        +takeDamage(amount)
-        +render()
-    }
-    class Enemy {
-        +updateAI(player)
-        +moveTowardsPlayer(player)
-        +checkCollision(projectiles)
-        +deathSprites
-    }
-    class PlayerProjectile {
-        +update(dt)
-        +isActive
-    }
-    class Animation {
-        +start() reset()
-        +updateFrame()
-        +render(x, y, w, h)
-        +hasFinished()
-    }
-    class Level1
-    class Level2
-    class Level3
-    class Menu
-    Player <|-- Enemy : inherits
-    Player "1" o-- "*" PlayerProjectile : fires
-    Level1 ..> Animation
-    Level2 ..> Animation
-    Level3 ..> Animation
-    Menu ..> Level1 : chapter select
-```
+<img src="docs/media/diagram-architecture.png" alt="Class diagram: Menu, Levels, Animation, Player, Enemy and PlayerProjectile" width="100%"/>
 
-### What the 901 frames are made of
-
-```mermaid
-pie showData
-    title Hand-placed image frames
-    "Cinematic cutscene frames" : 484
-    "Character sprite frames" : 329
-    "Scenes, puzzles & UI" : 88
-```
+<img src="docs/media/chart-frames.png" alt="Donut chart: 484 cinematic frames, 329 sprite frames, 88 scene and UI images" width="100%"/>
 
 ---
 
