@@ -58,15 +58,5 @@ Game Rules
 - Aralyn must complete all three levels to win.
 
 
-Project Contributors
-
-1. Israt Jahan Arna
-2. Nazifa Jahan
-3. Noushin Anamika Urmee
-4. Arina Afrin Arni
-
 Youtube Link
 https://www.youtube.com/watch?v=y2ESBHk0jxs
-
-Project Report
-https://drive.google.com/file/d/1kLECgu1OWFsTCK0qudlh96LkaiTt-6NJ/view?usp=sharing
